@@ -1,0 +1,10 @@
+.Car {
+    border: 1px solid black;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btn > button {
+    margin: 5px;
+}
