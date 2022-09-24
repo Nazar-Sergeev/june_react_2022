@@ -13,11 +13,11 @@ export default function CarForm({setCars}) {
     });
 
 
-        useEffect(() => {
-                setValue('model', 'Mercedes')
-                setValue('price', 10000)
-                setValue('year', 2013)
-            },[]);
+        // useEffect(() => {
+        //         setValue('model', 'Mercedes')
+        //         setValue('price', 10000)
+        //         setValue('year', 2013)
+        //     },[]);
 
     const submit = async (car) => {
         const {data} = await carService.create(car);
