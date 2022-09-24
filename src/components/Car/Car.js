@@ -1,32 +1,32 @@
 import css from './Car.module.css'
 import {carService} from "../../services";
 
-export default function Car({car,setCars}) {
+export default function Car({car, car: {id, model, price, year}, setCars, setCarUpdate}) {
 
     const deleteCar = async () => {
-        await carService.deleteById(car.id);
+        await carService.deleteById(id)
         setCars(cars => {
-            let index = cars.findIndex(value => value.id === car.id);
-            cars.splice(index, 1)
-            return [...cars]
-        })
+            let index = cars.findIndex(car => car.id === id);
+            cars.splice(index, 1);
+            return [...cars];
+        });
     };
 
-    const updateCar = async () => {
-      await carService.upDateById(car)
-    }
+    // const updateCar = async () => {
+    //  await
+    // }
 
     return (
         <div className={css.Car}>
             <div>
-                <div>Id: {car.id}</div>
-                <div>Model: {car.model}</div>
-                <div>Price: {car.price}</div>
-                <div>Year: {car.year}</div>
+                <div>id: {id}</div>
+                <div>model: {model}</div>
+                <div>price: {price}</div>
+                <div>year: {year}</div>
             </div>
             <div className={css.btn}>
-                <button>Update</button>
-                <button onClick={deleteCar}>Delete</button>
+                <button onClick={() => setCarUpdate(car)}>update</button>
+                <button onClick={() => deleteCar()}>delete</button>
             </div>
         </div>
     );

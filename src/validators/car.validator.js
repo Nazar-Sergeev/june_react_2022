@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-let carValidator = Joi.object({
+const carValidator = Joi.object({
     model: Joi.string().regex(/^[a-zA-ZА-яёЁіІїЇґҐєЄ]{1,20}$/).required().messages({
         'string.pattern.base': 'Тільки букви, мінімум 1 символ максимум 20 символів'
     }),
