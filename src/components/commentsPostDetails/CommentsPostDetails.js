@@ -10,7 +10,7 @@ const CommentsPostDetails = () => {
     const [post, setPost] = useState({});
 
     useEffect(() => {
-        commentsService.getByPostOfId(id).then(({data}) => setPost(data))
+        commentsService.getByIdOfPost(id).then(({data}) => setPost(data))
     }, [id]);
 
     return (
