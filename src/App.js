@@ -1,7 +1,7 @@
 import {Link, Route, Routes} from "react-router-dom";
 
 import './App.css';
-import {Albums, Comments, Home, Todos} from "./components";
+import {Albums, Comments, CommentsPostDetails, Home, Todos} from "./components";
 
 function App() {
 
@@ -16,12 +16,10 @@ function App() {
 
             <Routes>
                 <Route index element={<Home/>}/>
-                <Route path={'todos'} element={<Todos/>}>
-                    <Route path={'todos/:id'}/>
-                </Route>
-                <Route path={'albums'} element={<Albums/>}/>
-                <Route path={'comments'} element={<Comments/>}>
-                    <Route path={'comments/:id'}/>
+                <Route path={'/todos'} element={<Todos/>}/>
+                <Route path={'/albums'} element={<Albums/>}/>
+                <Route path={'/comments'} element={<Comments/>}>
+                    <Route path={':id/post'} element={<CommentsPostDetails/>}/>
                     </Route>
             </Routes>
         </div>

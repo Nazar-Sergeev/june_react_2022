@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 
 import {todosService} from "../../services";
-import {Link} from "react-router-dom";
 
 const Todos = () => {
 
@@ -15,7 +14,7 @@ const Todos = () => {
         <div>
             {
                 todos.map(todo => <div key={todo.id}>
-                    <Link to={`${todo.id}`}><h4>id: {todo.id} - title: {todo.title}</h4></Link>
+                    <h4>id: {todo.id} - title: {todo.title}</h4>
                     <hr/>
                 </div>)
             }

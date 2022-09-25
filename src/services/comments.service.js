@@ -3,7 +3,8 @@ import {urls} from "../configs";
 
 
 const commentsService = {
-    getAll: () => axiosService.get(urls.comments)
+    getAll: () => axiosService.get(urls.comments),
+    getByPostOfId: (id) => axiosService.get(`${urls.posts}/${id}`)
 };
 
 export {commentsService};
