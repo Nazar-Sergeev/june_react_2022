@@ -1,11 +1,7 @@
-import {Cat} from "../cat/Cat";
-
-const Cats = ({cats, deleteCat}) => {
+const Cats = () => {
     return (
         <div>
-            {
-                cats.map(cat => <Cat key={cat.id} cat={cat} deleteCat={deleteCat}/>)
-            }
+            Cats
         </div>
     );
 };

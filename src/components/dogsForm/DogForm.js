@@ -1,18 +1,8 @@
-import {useForm} from "react-hook-form";
-
-const DogForm = ({addDog}) => {
-    const {register, handleSubmit,reset} = useForm();
-    
-    const submit = (data) => {
-        addDog(data);
-        reset();
-    }
-
+const DogForm = () => {
     return (
-        <form onSubmit={handleSubmit(submit)}>
-            <label>Add Dog: <input type="text" placeholder={'dog name'} {...register('dog')}/></label>
-            <button>add dog</button>
-        </form>
+        <div>
+            DogForm
+        </div>
     );
 };
 

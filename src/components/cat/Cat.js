@@ -1,9 +1,7 @@
-const Cat = ({cat:{id, name}, deleteCat}) => {
-
+const Cat = () => {
     return (
         <div>
-            <h3>Cat: {name}</h3>
-            <button onClick={() => deleteCat(id)}>delete cat</button>
+            Cat
         </div>
     );
 };
