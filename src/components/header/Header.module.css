@@ -1,0 +1,16 @@
+.Header{
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    background: silver;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn button{
+    margin: 10px;
+}
