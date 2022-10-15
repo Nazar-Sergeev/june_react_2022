@@ -9,7 +9,7 @@ function App() {
             </div>
             <hr/>
             <div>
-                <Users/>
+                {/*<Users/>*/}
                 <Posts/>
             </div>
         </div>

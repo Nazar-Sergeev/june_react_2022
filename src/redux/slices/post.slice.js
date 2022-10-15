@@ -1,22 +1,21 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import {userService} from "../../services";
+import {postService} from "../../services";
 
 const initialState = {
-    users: [],
-    currentUser: null,
-    userDetails: null,
+    posts: [],
+    currentPost: null,
+    postFromAPI: null,
     loading: false,
     error: null
-};
+}
 
 const getAll = createAsyncThunk(
-    'userSlice/getAll',
-
+    'postSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await userService.getAll();
-            return data;
+            const {data} = await postService.getAll();
+            return data.slice(0, 10);
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -24,34 +23,34 @@ const getAll = createAsyncThunk(
 );
 
 const getById = createAsyncThunk(
-    'userSlice/getById',
-
+    'postSlice/getById',
     async ({id}, {rejectWithValue}) => {
         try {
-            const {data} = await userService.getById(id);
-            return data
+            const {data} = await postService.getById(id);
+            return data;
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
 );
 
-const userSlice = createSlice({
-    name: 'userSlice',
+const postSlice = createSlice({
+    name: 'postSlice',
     initialState,
     reducers: {
-        setCurrentUser: (state, action) => {
-            state.currentUser = action.payload;
+        setCurrentPost: (state, action) => {
+            state.currentPost = action.payload
         },
         deleteById: (state, action) => {
-            const index = state.users.findIndex(user => user.id === action.payload);
-            state.users.splice(index, 1);
+            const index = state.posts.findIndex(post => post.id === action.payload);
+            state.posts.splice(index, 1);
         }
     },
+
     extraReducers: builder => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.users = action.payload;
+                state.posts = action.payload
                 state.loading = false;
             })
             .addCase(getAll.pending, (state, action) => {
@@ -62,21 +61,22 @@ const userSlice = createSlice({
                 state.loading = false;
             })
             .addCase(getById.fulfilled, (state, action) => {
-                state.userDetails = action.payload;
+                state.postFromAPI = action.payload;
             })
     }
 });
 
-const {reducer: userReducer, actions: {setCurrentUser,deleteById}} = userSlice;
 
-const userActions = {
+const {reducer: postReducer, actions: {setCurrentPost, deleteById}} = postSlice;
+
+const postActions = {
     getAll,
     getById,
-    setCurrentUser,
+    setCurrentPost,
     deleteById
 }
 
 export {
-    userReducer,
-    userActions
+    postReducer,
+    postActions
 }

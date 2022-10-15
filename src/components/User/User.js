@@ -1,19 +1,22 @@
 import {useDispatch} from "react-redux";
 
-import {userActions} from "../../redux";
+import {userActions} from "../../redux/slices";
 
-const User = ({user, user:{id, name, email, username}}) => {
+const User = ({user, user: {id, name, username, email}}) => {
 
     const dispatch = useDispatch();
+
     return (
         <div>
-            <div>Id:{id}</div>
-            <div>Name:{name}</div>
-            <div>UserName:{username}</div>
-            <div>Email:{email}</div>
-            <button onClick={() => dispatch(userActions.setCurrentUser(user))}>select</button>
-            <button onClick={() => dispatch(userActions.getById({id}))}>detali</button>
-            <button onClick={() => dispatch(userActions.deleteById(id))}>delete</button>
+            <div>
+                <div>id: {id}</div>
+                <div>name: {name}</div>
+                <div>userName: {username}</div>
+                <div>email: {email}</div>
+                <button onClick={() => dispatch(userActions.getById({id}))}>Details</button>
+                <button onClick={() => dispatch(userActions.deleteById(id))}>Delete</button>
+                <button onClick={() => dispatch(userActions.setCurrentUser(user))}>Select</button>
+            </div>
             <hr/>
         </div>
     );
