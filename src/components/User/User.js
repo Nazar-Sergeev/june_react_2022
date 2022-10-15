@@ -12,6 +12,8 @@ const User = ({user, user:{id, name, email, username}}) => {
             <div>UserName:{username}</div>
             <div>Email:{email}</div>
             <button onClick={() => dispatch(userActions.setCurrentUser(user))}>select</button>
+            <button onClick={() => dispatch(userActions.getById({id}))}>detali</button>
+            <button onClick={() => dispatch(userActions.deleteById(id))}>delete</button>
             <hr/>
         </div>
     );
